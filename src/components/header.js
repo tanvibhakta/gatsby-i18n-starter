@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import LangLink from './langlink';
 
 const Header = ({ siteTitle }) => (
   <div
@@ -26,6 +27,7 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
+      <LangLink to='/page-2' lang='2'/>
     </div>
   </div>
 )
