@@ -1,14 +1,16 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { graphql } from 'gatsby';
 
-import Layout from '../components/layout'
-
-const SecondPage = () => (
-  <Layout>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
-  </Layout>
+export default ({ data }) => (
+  <h1>{data.site.siteMetadata.title}</h1>
 )
 
-export default SecondPage
+export const query = graphql`
+{
+  site {
+    siteMetadata {
+      title
+    }
+  }
+}
+`
