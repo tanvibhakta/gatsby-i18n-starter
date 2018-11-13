@@ -1,13 +1,12 @@
 import React from 'react'
-import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import { Link } from 'gatsby';
+import MarkdownRenderer from '../components/markdownrenderer';
 
 export default ({ data }) => (
     <Layout>
-      <h2>{data.allMarkdownRemark.edges[1].node.frontmatter.title}</h2>
-      <p dir='rtl'>{data.allMarkdownRemark.edges[2].node.rawMarkdownBody}</p>
+      <MarkdownRenderer lang='2' />
       <Link to='/'> 
         <p>{window.location.href}</p>
       </Link>
@@ -15,19 +14,3 @@ export default ({ data }) => (
   )
 
 
- 
-
-export const query = graphql`
-{
-  allMarkdownRemark {
-    edges {
-      node {
-        frontmatter {
-          title
-        }
-        rawMarkdownBody
-      }
-    }
-  }
-}
-`
