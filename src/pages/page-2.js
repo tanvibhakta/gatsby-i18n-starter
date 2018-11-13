@@ -1,15 +1,26 @@
 import React from 'react'
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
+
+import Layout from '../components/layout'
 
 export default ({ data }) => (
-  <h1>{data.site.siteMetadata.title}</h1>
+  <Layout>
+    <h1>{data.allMarkdownRemark.edges.node.frontmatter.title}</h1>
+    <p>Hello</p>
+</Layout>
 )
+ 
 
 export const query = graphql`
 {
-  site {
-    siteMetadata {
-      title
+  allMarkdownRemark {
+    edges {
+      node {
+        frontmatter {
+          title
+        }
+        rawMarkdownBody
+      }
     }
   }
 }
