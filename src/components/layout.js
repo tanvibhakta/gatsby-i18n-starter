@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 import './layout.css'
+import LangSwitcher from './langswitcher';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -37,6 +38,7 @@ const Layout = ({ children }) => (
             paddingTop: 0,
           }}
         >
+        <LangSwitcher/>
           {children}
         </div>
       </>
