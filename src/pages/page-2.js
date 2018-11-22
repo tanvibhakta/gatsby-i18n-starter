@@ -11,6 +11,7 @@ export default ({ data }) => (
       <LanguageContext.Consumer>
         {
           ({ lang }) => <MarkdownRenderer lang={lang} />
+          // BUG: default context is not being given to the consumer
         }
       </LanguageContext.Consumer>
       <Link to='/'> 

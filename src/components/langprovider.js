@@ -7,5 +7,8 @@ function getLang() {
     return lang.split('/')[3]
 }
 
+//TODO: write a function which provides the index number for the 
+//obtained language in order, from the config array
+
 export default LanguageContext
 export { getLang }
