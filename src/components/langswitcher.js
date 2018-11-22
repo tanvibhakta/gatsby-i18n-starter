@@ -11,12 +11,11 @@ const LangSwitcher = () => (
           }
         }
       }
-
     `} 
     render={data => (
       <div>
         {data.site.siteMetadata.languages.map((lang) => (
-         <LangLink lang={lang} to={getCurrentUrl()}></LangLink>
+         <LangLink lang={lang} to={window.location.pathname}></LangLink>
          ))}
       </div>
     )}
@@ -24,7 +23,3 @@ const LangSwitcher = () => (
 )
 
 export default LangSwitcher
-
-function getCurrentUrl() {
-  return  window.location.href.split('/').slice(3).toString().replace(',', '/');
-}
