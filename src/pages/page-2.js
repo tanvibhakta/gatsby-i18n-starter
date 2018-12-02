@@ -1,23 +1,23 @@
 import React from 'react'
 
 import Layout from '../components/layout'
-import { Link } from 'gatsby';
+import LangLink from '../components/langlink'
 import MarkdownRenderer from '../components/markdownrenderer';
-import LanguageContext from '../components/langprovider';
+import { Consumer } from '../context/createContext'
 
 export default ({ data }) => (
     <Layout>
-      {/* TODO: refactor to get what current language is (from provider or getlang?) */}
-      <LanguageContext.Consumer>
-        {
-          ({ lang }) => <MarkdownRenderer lang={lang} />
-          // BUG: default context is not being given to the consumer
-        }
-      </LanguageContext.Consumer>
-      <Link to='/'> 
-        <p>{window.location.href}</p>
-      </Link>
-  </Layout>
+          {/* // BUG: default context is not being given to the consumer */}
+      <Consumer> 
+        {({ lang }) => (
+          <>
+            <LangLink lang={lang} to='/'>{lang}</LangLink>
+            <MarkdownRenderer/>
+          </>  
+         )} 
+      </Consumer>
+      
+    </Layout>
   )
 
 
