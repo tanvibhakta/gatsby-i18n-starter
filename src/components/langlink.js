@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link }  from 'gatsby'
 
-const LangLink = props => {
+function getSlug(props) {
     let slug = props.to.split('/');
     slug[1] = props.lang;
-    slug = slug.join('/');
-    return <Link to={slug}>{props.lang}</Link>
+    return slug.join('/');
 }
+
+const LangLink = props => (
+    <Link to={getSlug(props)}>{props.children}</Link>
+)
 
 export default LangLink

@@ -15,7 +15,7 @@ const LangSwitcher = () => (
     render={data => (
       <div>
         {data.site.siteMetadata.languages.map((lang) => (
-         <LangLink lang={lang} to={window.location.pathname}></LangLink>
+         <LangLink lang={lang} to={window.location.pathname}>{lang}</LangLink>
          ))}
       </div>
     )}
