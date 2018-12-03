@@ -7,7 +7,8 @@
 // You can delete this file if you're not using it
 
 // Take the pages from src/pages and generate pages for all locales, e.g. /blog and /en/blog
-const path = require(`path`)
+const langList = [];
+const nodeList = [];
 
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions
@@ -31,18 +32,39 @@ exports.createPages = ({ graphql, actions }) => {
             }
         `).then(result => {
             result.data.site.siteMetadata.languages.map((language) => {
+                langList.push(language)
+                console.log(langList);
+                
                 result.data.allSitePage.edges.map(({ node }) => {
-                    createPage({
-                        path: '/' + language + node.path,
-                        component: path.resolve(`./src/components/layout.js`),
-                        context: {
-                            language: language,
-                        }, 
-                    })
+                    nodeList.push(node)
+                    console.log(nodeList);
+                    
                 })
             });
         })
         )
-        
     })
 } 
+
+exports.onCreatePage = ({ page, actions }) => {
+    const { createPage, deletePage } = actions
+    return new Promise(resolve => {
+      const oldPage = Object.assign({}, page)
+      
+      // Add all languages from the list
+      langList.forEach( (language) => {
+          nodeList.forEach( (node) => {
+              page.path = '/' + language + node.path;
+              console.log(page.path);
+              
+          })
+      })
+
+      if (page.path !== oldPage.path) {
+        // Replace new page with old page
+        deletePage(oldPage)
+        createPage(page)
+      }
+      resolve()
+    })
+  }
