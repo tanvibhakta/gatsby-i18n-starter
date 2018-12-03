@@ -10,9 +10,8 @@
 const langList = [];
 const nodeList = [];
 
-exports.createPages = ({ graphql, actions }) => {
-    const { createPage } = actions
-    return new Promise((resolve, reject) => {
+exports.createPages = ({ graphql }) => {
+    return new Promise(( resolve ) => {
         resolve(
             graphql(`
             {
@@ -21,25 +20,11 @@ exports.createPages = ({ graphql, actions }) => {
                         languages
                     }
                 }
-
-                allSitePage {
-                    edges {
-                        node {
-                            path
-                        }
-                    }
-                }   
             }
         `).then(result => {
             result.data.site.siteMetadata.languages.map((language) => {
                 langList.push(language)
                 console.log(langList);
-                
-                result.data.allSitePage.edges.map(({ node }) => {
-                    nodeList.push(node)
-                    console.log(nodeList);
-                    
-                })
             });
         })
         )
@@ -53,17 +38,18 @@ exports.onCreatePage = ({ page, actions }) => {
       
       // Add all languages from the list
       langList.forEach( (language) => {
-          nodeList.forEach( (node) => {
-              page.path = '/' + language + node.path;
-              console.log(page.path);
-              
-          })
+              console.log("BEFORE ----"+page.path);
+              page.path = '/' + language + page.path;
+              console.log("AFTER ----- "+ page.path);
+                
       })
 
       if (page.path !== oldPage.path) {
         // Replace new page with old page
         deletePage(oldPage)
         createPage(page)
+        console.log("FINAL-------------"+ page.path);
+        
       }
       resolve()
     })
