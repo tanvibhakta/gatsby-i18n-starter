@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Provider } from './create-context'
+import { createContext } from 'react'
 //TODO: write a function which provides the index number for the
 //obtained language in order, from the config array
+
+const { Provider, Consumer } = createContext()
 
 class LanguageProvider extends Component {
   state = {
@@ -21,4 +23,4 @@ class LanguageProvider extends Component {
   }
 }
 
-export default LanguageProvider
+export { LanguageProvider, Consumer as LanguageConsumer }
