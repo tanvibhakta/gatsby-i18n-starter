@@ -8,7 +8,6 @@
 
 // Take the pages from src/pages and generate pages for all locales, e.g. /blog and /en/blog
 const langList = []
-const nodeList = []
 
 exports.createPages = ({ graphql }) => {
   return new Promise(resolve => {
@@ -23,6 +22,7 @@ exports.createPages = ({ graphql }) => {
         }
       `).then(result => {
         result.data.site.siteMetadata.languages.map(language => {
+          //create the list of languages for use during onCreatePage
           langList.push(language)
           console.log(langList)
         })

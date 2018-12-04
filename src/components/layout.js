@@ -21,6 +21,7 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
+        {/* TODO: Switch this out to wrap all of html via gatsby-browser */}
         <LanguageProvider>
           <Helmet
             title={data.site.siteMetadata.title}

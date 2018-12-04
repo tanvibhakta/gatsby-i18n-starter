@@ -1,6 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import { LanguageConsumer } from '../contexts/language-context'
+//This component displays the same content in different languages for the given page
 
 //TODO: reformat query to find file on basis of language/
 //Maybe adding a filter to the query based on file structure?
