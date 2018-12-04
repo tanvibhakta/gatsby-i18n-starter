@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import LangLink from './langlink'
-import { Consumer } from '../context/createContext'
+import { Consumer } from '../context/create-context'
 
 const LangSwitcher = () => (
   <StaticQuery

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { StaticQuery, graphql } from 'gatsby'
-import { Consumer } from '../context/createContext'
+import { Consumer } from '../context/create-context'
 
 //TODO: reformat query to find file on basis of language/
 //Maybe adding a filter to the query based on file structure?

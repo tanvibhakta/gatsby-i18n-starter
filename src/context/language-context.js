@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Provider } from './createContext'
+import { Provider } from './create-context'
 //TODO: write a function which provides the index number for the
 //obtained language in order, from the config array
 
