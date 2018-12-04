@@ -5,8 +5,8 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 import './layout.css'
-import LangSwitcher from './langswitcher'
-import LanguageProvider from '../context/languagecontext'
+import LangSwitcher from './lang-switcher'
+import { LanguageProvider } from '../contexts/language-context'
 
 const Layout = ({ children }) => (
   <StaticQuery

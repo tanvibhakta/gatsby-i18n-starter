@@ -1,7 +1,7 @@
 import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import LangLink from './langlink'
-import { Consumer } from '../context/create-context'
+import LangLink from './lang-link'
+import { LanguageConsumer } from '../contexts/language-context'
 
 const LangSwitcher = () => (
   <StaticQuery
@@ -21,11 +21,11 @@ const LangSwitcher = () => (
             <LangLink lang={lang} to={window.location.pathname}>
               {lang}
             </LangLink>
-            <Consumer>
+            <LanguageConsumer>
               {({ langList }) => {
                 var temp = langList.push({ lang })
               }}
-            </Consumer>
+            </LanguageConsumer>
           </>
         ))}
       </div>

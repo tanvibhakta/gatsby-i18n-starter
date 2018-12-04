@@ -1,7 +1,6 @@
 import React from 'react'
-
 import { StaticQuery, graphql } from 'gatsby'
-import { Consumer } from '../context/create-context'
+import { LanguageConsumer } from '../contexts/language-context'
 
 //TODO: reformat query to find file on basis of language/
 //Maybe adding a filter to the query based on file structure?
@@ -27,12 +26,12 @@ const MarkdownRenderer = () => {
         }
       `}
       render={data => (
-        <Consumer>
+        <LanguageConsumer>
           {({ langIndex }) => {
             console.log(langIndex)
             return <p>{data.allMarkdownRemark.edges[3].node.rawMarkdownBody}</p>
           }}
-        </Consumer>
+        </LanguageConsumer>
       )}
     />
   )
