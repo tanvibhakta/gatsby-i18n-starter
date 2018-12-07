@@ -5,9 +5,8 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 import './layout.css'
-import LangSwitcher from './langswitcher'
-import LanguageProvider from '../context/languagecontext';
-
+import LangSwitcher from './lang-switcher'
+import { LanguageProvider } from '../contexts/language-context'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -22,28 +21,29 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-      <LanguageProvider>
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        >
-          <html lang="en" />
-        </Helmet>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: '0 auto',
-            maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0,
-          }}
-        >
-        <LangSwitcher/>
+        {/* TODO: Switch this out to wrap all of html via gatsby-browser */}
+        <LanguageProvider>
+          <Helmet
+            title={data.site.siteMetadata.title}
+            meta={[
+              { name: 'description', content: 'Sample' },
+              { name: 'keywords', content: 'sample, something' },
+            ]}
+          >
+            <html lang="en" />
+          </Helmet>
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <div
+            style={{
+              margin: '0 auto',
+              maxWidth: 960,
+              padding: '0px 1.0875rem 1.45rem',
+              paddingTop: 0,
+            }}
+          >
+            <LangSwitcher />
             {children}
-        </div>
+          </div>
         </LanguageProvider>
       </>
     )}
