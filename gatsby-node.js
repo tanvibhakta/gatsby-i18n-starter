@@ -39,12 +39,16 @@ exports.onCreatePage = ({ page, actions }) => {
     // Add all languages from the list
     var ogpath = page.path
     langList.forEach(language => {
-      console.log('BEFORE ----' + page.path)
-      page.path = '/' + language + ogpath
-      createPage(page)
-      console.log('AFTER ----- ' + page.path)
+      if (page.path != '/dev-404-page/') {
+        console.log('BEFORE ----' + page.path)
+        page.path = '/' + language + ogpath
+        createPage(page)
+        console.log('AFTER ----- ' + page.path)
+      }
     })
-    deletePage(oldPage)
+    if (page.path != '/dev-404-page/') {
+      deletePage(oldPage)
+    }
     resolve()
   })
 }
