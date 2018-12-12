@@ -6,7 +6,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import './layout.css'
 import LangSwitcher from './lang-switcher'
-import { LanguageProvider } from '../contexts/language-context'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -22,7 +21,6 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         {/* TODO: Switch this out to wrap all of html via gatsby-browser */}
-        <LanguageProvider>
           <Helmet
             title={data.site.siteMetadata.title}
             meta={[
@@ -44,7 +42,6 @@ const Layout = ({ children }) => (
             <LangSwitcher />
             {children}
           </div>
-        </LanguageProvider>
       </>
     )}
   />
